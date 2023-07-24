@@ -1,0 +1,41 @@
+NOTE ::
+First we need to write (pragma foreign_key = ON)
+
+create table stud
+(
+	id number(10) primary key,
+	name varchar(30) not null
+);
+
+create table stud_detail
+(
+	id number(10) references stud(id),
+	city varchar(30) not null,
+	mobile number(11) not null
+);
+
+
+insert into stud
+values(1,"meet"),(2,"harsh"),(3,"bhavin"),(4,"hiten"),(5,"harry");
+
+insert into stud_detail
+values(1,"surat",7227848152),(2,"surat",9909393113),(3,"kadodara",6353954397),(4,"bagumra",7265070790),(5,"bardoli",9987585940);
+
+1.Display all record of stud table.
+-> select * from stud;
+
+2.Display all record of stud_detail table.
+-> select * from stud_detail;
+
+3.Display record of student whose come from city "surat".
+-> select s.id , s.name from stud s , stud_detail sd
+   where s.id=sd.id and sd.city like  "surat";
+
+4.Display record of student whose come from city start from b.
+-> select s.id , s.name from stud s , stud_detail sd
+   where s.id=sd.id and sd.city like  "b%";
+
+
+
+
+
